@@ -1,0 +1,56 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/projects/:project_id/tasks?status=DONE&priority=LOW"
+  method: GET
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  queryParams:
+    - key: status
+      value: DONE
+      description: " (This can only be one of TODO,IN_PROGRESS,DONE)"
+    - key: priority
+      value: LOW
+      description: " (This can only be one of HIGH,MEDIUM,LOW)"
+  pathVariables:
+    - key: project_id
+      value: <uuid>
+      description: "(Required) "
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "id": "<uuid>",
+          "project_id": "<uuid>",
+          "title": "<string>",
+          "status": "IN_PROGRESS",
+          "priority": "HIGH",
+          "created_at": "<dateTime>",
+          "description": "<string>",
+          "assigned_to": "<uuid>",
+          "ai_score": "<float>",
+          "due_date": "<dateTime>"
+        },
+        {
+          "id": "<uuid>",
+          "project_id": "<uuid>",
+          "title": "<string>",
+          "status": "IN_PROGRESS",
+          "priority": "HIGH",
+          "created_at": "<dateTime>",
+          "description": "<string>",
+          "assigned_to": "<uuid>",
+          "ai_score": "<float>",
+          "due_date": "<dateTime>"
+        }
+      ]
+order: 1000

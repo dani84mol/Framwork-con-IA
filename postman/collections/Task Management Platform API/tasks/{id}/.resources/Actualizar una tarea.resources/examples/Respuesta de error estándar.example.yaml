@@ -1,0 +1,41 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/tasks/:id"
+  method: PUT
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  pathVariables:
+    - key: id
+      value: <uuid>
+      description: "(Required) "
+  body:
+    type: json
+    content: |-
+      {
+        "title": "<string>",
+        "description": "<string>",
+        "status": "DONE",
+        "priority": "MEDIUM",
+        "assigned_to": "<uuid>",
+        "due_date": "<dateTime>"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "statusCode": "<integer>",
+        "message": "<string>",
+        "error": "<string>"
+      }
+order: 2000

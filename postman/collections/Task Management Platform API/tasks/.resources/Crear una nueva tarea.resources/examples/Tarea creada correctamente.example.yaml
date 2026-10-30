@@ -1,0 +1,44 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/tasks"
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  body:
+    type: json
+    content: |-
+      {
+        "project_id": "<uuid>",
+        "title": "<string>",
+        "description": "<string>",
+        "priority": "MEDIUM",
+        "assigned_to": "<uuid>",
+        "due_date": "<dateTime>"
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "<uuid>",
+        "project_id": "<uuid>",
+        "title": "<string>",
+        "status": "IN_PROGRESS",
+        "priority": "LOW",
+        "created_at": "<dateTime>",
+        "description": "<string>",
+        "assigned_to": "<uuid>",
+        "ai_score": "<float>",
+        "due_date": "<dateTime>"
+      }
+order: 1000

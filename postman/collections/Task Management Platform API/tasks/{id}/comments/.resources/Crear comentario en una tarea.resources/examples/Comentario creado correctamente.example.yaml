@@ -1,0 +1,38 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/tasks/:id/comments"
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  pathVariables:
+    - key: id
+      value: <uuid>
+      description: "(Required) "
+  body:
+    type: json
+    content: |-
+      {
+        "content": "<string>"
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": "<uuid>",
+        "task_id": "<uuid>",
+        "user_id": "<uuid>",
+        "content": "<string>",
+        "created_at": "<dateTime>"
+      }
+order: 1000
